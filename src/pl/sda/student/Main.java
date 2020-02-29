@@ -47,6 +47,11 @@ public class Main {
         }
         JSONUtils jsonUtils = new JSONUtils();
         jsonUtils.wrtieList("lista.json", studentList);
+        try {
+            jsonUtils.readList("lista.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

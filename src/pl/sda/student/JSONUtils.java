@@ -11,24 +11,27 @@ import java.util.List;
 
 public class JSONUtils {
 
-    public void wrtieList(String fileName, List<Student> students){
+public void wrtieList(String fileName, List<Student> students) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            objectMapper.writeValue(new File(fileName), students);
+        objectMapper.writeValue(new File(fileName), students);
         } catch (IOException e) {
-            e.printStackTrace();
+        e.printStackTrace();
         }
 
-    }
+        }
 
-    public void readList(String name){
+public void readList(String fileName) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            Student[] students = objectMapper.readValue(new File("plik.json"), Student[].class);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    try {
+      Student[] students = objectMapper.readValue(new File(fileName), Student[].class);
+      for(Student stu: students){
+          System.out.println(stu.getName() + " " + stu.getLastname() + " " + stu.getIndex());
+      }
+    } catch (JsonProcessingException e) {
+        e.printStackTrace();
     }
+
 
 }
+        }
